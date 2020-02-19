@@ -10,7 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        ZStack {
+            RadioButtons()
+        }
     }
 }
 
@@ -19,3 +21,37 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+struct RadioButtons: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            Text("FIlter By")
+                .padding(.top)
+            
+            ForEach(data, id: \.self) { i in
+                Button(action: {
+                    
+                }) {
+                    HStack {
+                        Text(i)
+                        Spacer()
+                        Circle()
+                            .fill(Color.black.opacity(0.5))
+                            .frame(width: 20, height: 20)
+                    }
+                }
+            }
+        }
+        .padding(.vertical)
+        .padding(.horizontal, 25)
+    }
+}
+
+var data = [
+    "Relevance",
+    "Newest",
+    "Price(low to high)",
+    "Price(high to low)",
+    "Sort by Specs",
+    "Sort By Storage"
+]
